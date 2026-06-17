@@ -1,14 +1,23 @@
 class SecurityScanner:
     def __init__(self):
-        # هذه قائمة الدوال التي تجعل الكود "ملغوماً"
-        self.dangerous_functions = ["system", "strcpy", "memcpy", "gets", "scanf"]
+        self.rules = [
+            {"name": "Buffer Overflow", "patterns": ["gets", "strcpy"], "severity": "Critical", "fix": "استخدم fgets"},
+            {"name": "SQL Injection", "patterns": ["SELECT", "userInput"], "severity": "High", "fix": "استخدم Prepared Statements"},
+            {"name": "Hardcoded Secrets", "patterns": ["password", "admin123"], "severity": "High", "fix": "استخدم .env"}
+        ]
 
     def analyze(self, source_code: str):
         findings = []
-        for func in self.dangerous_functions:
-            if func in source_code:
-                findings.append(f"تنبيه: تم اكتشاف دالة خطيرة [{func}] التي قد تؤدي لثغرات Buffer Overflow أو Injection.")
-        
-        if not findings:
-            return "الكود يبدو سليماً من الناحية السطحية."
+        lines = source_code.splitlines()
+        for i, line in enumerate(lines, 1):
+            for rule in self.rules:
+                for pattern in rule["patterns"]:
+                    if pattern in line:
+                        findings.append({
+                            "issue": rule["name"],
+                            "severity": rule["severity"],
+                            "line": i,
+                            "explanation": f"تم اكتشاف {rule['name']} في السطر {i}",
+                            "fix": rule["fix"]
+                        })
         return findings
