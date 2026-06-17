@@ -1,0 +1,3 @@
+/workspaces/sovereign-sentinel-ai/core-engine/build/CMakeFiles/sentinel_core.dir
+/workspaces/sovereign-sentinel-ai/core-engine/build/CMakeFiles/edit_cache.dir
+/workspaces/sovereign-sentinel-ai/core-engine/build/CMakeFiles/rebuild_cache.dir

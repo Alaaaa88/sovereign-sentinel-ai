@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/sentinel_core.dir/src/main.cpp.o CMakeFiles/sentinel_core.dir/src/parser.cpp.o -o sentinel_core 
