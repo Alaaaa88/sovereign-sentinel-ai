@@ -3,20 +3,23 @@
 #include <vector>
 #include <concepts>
 #include <string_view>
+#include <nlohmann/json.hpp>
 
-struct FunctionNode {
-    std::string name;
-    std::string return_type;
-    int line_number;
-    bool is_security_sensitive;
+struct CodeMetricNode {
+    std::string entity_name;   // اسم الدالة أو الكلاس
+    std::string type;          // Function, Class, Control_Flow
+    int line_start;
+    bool is_vulnerable;
+    std::string risk_category; // Insecure_Crypto, Hardcoded_Secret, Clean
 };
 
 template<typename T>
-concept CodeParser = requires(T parser, std::string_view file_content) {
-    { parser.parse_functions(file_content) } -> std::same_as<std::vector<FunctionNode>>;
+concept AdvancedCodeAnalyzer = requires(T analyzer, std::string_view source) {
+    { analyzer.analyze_codebase(source) } -> std::same_as<std::vector<CodeMetricNode>>;
 };
 
-class MicroParser {
+class SovereignParser {
 public:
-    std::vector<FunctionNode> parse_functions(std::string_view file_content);
+    std::vector<CodeMetricNode> analyze_codebase(std::string_view source);
+    nlohmann::json serialize_to_json(const std::vector<CodeMetricNode>& metrics, std::string_view file_name);
 };
