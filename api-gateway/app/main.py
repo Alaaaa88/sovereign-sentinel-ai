@@ -28,33 +28,30 @@ async def analyze_code(payload: CodePayload):
     if not os.path.exists(binary_path):
         raise HTTPException(
             status_code=500, 
-            detail="Core analyzer engine binary not found. Please compile the C++ project."
+            detail="Core analyzer engine binary not found."
         )
         
     try:
-        # Spawning the real C++ execution layer safely
         process = subprocess.run(
             [binary_path],
+            input=payload.source_code,
             capture_output=True,
             text=True,
             check=True
         )
         
-        raw_output = process.stdout
-        
-        # Locate the beginning of the strict structural JSON string
-        json_start = raw_output.find("{")
-        if json_start == -1:
-            raise HTTPException(status_code=500, detail="Invalid core engine output format.")
-            
-        parsed_json = json.loads(raw_output[json_start:])
+        raw_output = process.stdout.strip()
+        parsed_json = json.loads(raw_output)
         
         return {
             "success": True,
+            "filename_processed": payload.file_name,
             "metrics": parsed_json
         }
         
     except subprocess.CalledProcessError as e:
-        raise HTTPException(status_code=500, detail=f"Core engine runtime crash: {e.stderr}")
+        raise HTTPException(status_code=500, detail=f"Core engine crash: {e.stderr}")
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=500, detail="Failed to parse clean JSON from C++ binary.")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Internal gateway exception: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
