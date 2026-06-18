@@ -10,3 +10,5 @@ __pycache__/
 .DS_Store
 security_report.json
 venv/
+security_report.json
+venv/

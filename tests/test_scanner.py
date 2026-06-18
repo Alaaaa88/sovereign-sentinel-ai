@@ -1,10 +1,16 @@
+import subprocess
 import os
-import pytest
+import json
 
-# اختبار للتأكد من وجود المحرك الأساسي (Core Engine)
-def test_core_engine_exists():
-    assert os.path.exists("core-engine/scanner"), "Core engine binary not found!"
-
-# اختبار بسيط للتأكد من أن الاختبارات تعمل
-def test_placeholder():
-    assert True
+def test_vulnerability_detection_and_report():
+    # تشغيل الماسح
+    result = subprocess.run(['python3', 'scanner_engine.py', 'samples/vulnerable.cpp'], capture_output=True, text=True)
+    
+    # التأكد من اكتشاف الثغرة
+    assert result.returncode == 1
+    assert os.path.exists("security_report.json")
+    
+    # التأكد من صحة محتوى التقرير
+    with open("security_report.json", 'r') as f:
+        data = json.load(f)
+        assert data[0]["ruleId"] == "CWE-120"
