@@ -1,69 +1,82 @@
-
-
 # Sovereign Sentinel AI
 
-Sovereign Sentinel AI is a high-performance static analysis engine designed to automate security vulnerability detection within software development lifecycles. By integrating directly into CI/CD pipelines, it enforces security standards and prevents the integration of vulnerable code.
+Sovereign Sentinel is a high-performance security framework designed for automated vulnerability discovery using advanced systems engineering. The project integrates C++ for low-level processing with Python for contextual data analysis.
 
-## Core Features
+---
 
-* **Automated Static Analysis:** Scans source code repositories for common security vulnerabilities, including Buffer Overflows, SQL Injections, and Hardcoded Secrets.
-* **Actionable Reporting:** Provides precise feedback, including vulnerability type, severity, exact line number, and mitigation strategies.
-* **CI/CD Integration:** Automatically blocks Pull Requests that fail security compliance checks.
-* **Extensible Architecture:** Designed for modularity, allowing for the rapid addition of new language support and detection patterns.
+### Technical Features
 
-## Technical Specifications
+* **High-Performance Engine:** A C++ core engine built for memory analysis and high-speed code scanning.
+* **Orchestration Layer:** A Python-based automation layer that performs data flow analysis across project files.
+* **Contextual Reporting:** Generates intelligent JSON reports detailing vulnerability propagation paths.
+* **Performance-First:** Architecture optimized for scalability and integration into CI/CD pipelines.
 
-### Detection Engine
+---
 
-The engine utilizes a multi-pass scanning strategy to analyze source code. It converts raw code into structured data to identify risky patterns and potential exploit vectors.
+### Tech Stack
 
-### Data Contract
+| Component | Technology |
+| --- | --- |
+| Core Engine | C++ |
+| Automation | Python 3.10+ |
+| Architecture | Orchestrator-Worker Pattern |
+| Data Integrity | Pydantic / JSON Schema |
 
-The API provides a standardized JSON response format, ensuring compatibility with external dashboards and reporting tools:
+---
 
-```json
-{
-  "status": "success",
-  "security_score": 82,
-  "findings": [
-    {
-      "issue": "SQL Injection",
-      "severity": "High",
-      "line": 15,
-      "explanation": "User-controlled input reaches SQL query construction.",
-      "recommended_fix": "Use parameterized queries."
-    }
-  ]
-}
+### Usage
+
+1. **Install dependencies:**
+```bash
 
 ```
 
-## Security Enforcement Workflow
 
-To maintain code integrity, Sovereign Sentinel AI functions as a quality gate in your development workflow:
 
-1. **Code Submission:** Developer initiates a Pull Request.
-2. **Automated Scan:** The engine executes an asynchronous analysis on the modified files.
-3. **Compliance Check:** If critical vulnerabilities are detected, the integration blocks the merge operation.
-4. **Remediation:** The system provides the developer with the exact line number and the required fix.
+pip install -r requirements.txt
 
-## Getting Started
+```
 
-To integrate the scanner into your project, add the following GitHub Action to your repository:
+2. **Build the engine:**
+   ```bash
+   g++ core-engine/scanner.cpp -o core-engine/scanner
 
-```yaml
-name: Security Scan
-on: [pull_request]
-jobs:
-  scan:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run Sovereign Sentinel Scan
-        run: python scanner_engine.py --path ./
+```
+
+3. **Run the security analysis:**
+```bash
+python3 scanner_engine.py
+
+```
+
+
 
 ```
 
 ---
 
-Once you paste this, your project will look and feel like a professional, enterprise-ready security platform. Would you like to focus on the `scanner_engine.py` implementation next to ensure this `README` matches the actual functionality?
+### Project Structure
+```text
+sovereign-sentinel-ai/
+├── core-engine/        # High-performance scanning engine (C++)
+├── api-gateway/        # API integration layer
+├── scanner_engine.py   # Orchestrator (Python)
+├── requirements.txt    # Dependency manifest
+└── security_report.json # Analysis output
+
+```
+
+---
+
+### Developed By
+
+**Alaa Aljohani**
+*Performance Architect & Cybersecurity Researcher*
+
+This project is part of an initiative to develop AI-driven security tools for protecting sensitive systems.
+
+---
+
+### License
+
+© 2026 Alaa Aljohani. All rights reserved.
