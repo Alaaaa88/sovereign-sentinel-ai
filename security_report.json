@@ -1,0 +1,22 @@
+{
+    "metadata": {
+        "files_scanned": 1,
+        "engine": "Sovereign Sentinel v1.0"
+    },
+    "summary": {
+        "CRITICAL": 1,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0
+    },
+    "risk_score": 40,
+    "findings": [
+        {
+            "file": "./test/vuln.cpp",
+            "severity": "CRITICAL",
+            "description": "Buffer Overflow",
+            "cwe": "CWE-120",
+            "recommendation": "Use fgets() instead of gets() to prevent buffer overflow."
+        }
+    ]
+}

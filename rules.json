@@ -1,0 +1,52 @@
+{
+  "rules": [
+    {
+      "pattern": "gets(",
+      "severity": "CRITICAL",
+      "description": "Buffer Overflow",
+      "cwe": "CWE-120",
+      "recommendation": "Use fgets() instead of gets() to prevent buffer overflow."
+    },
+    {
+      "pattern": "strcpy(",
+      "severity": "HIGH",
+      "description": "Unsafe Buffer Copy",
+      "cwe": "CWE-119",
+      "recommendation": "Use strncpy() or similar bounded functions."
+    },
+    {
+      "pattern": "eval(",
+      "severity": "HIGH",
+      "description": "Arbitrary Code Execution",
+      "cwe": "CWE-94",
+      "recommendation": "Avoid using eval() with untrusted input."
+    },
+    {
+      "pattern": "system(",
+      "severity": "HIGH",
+      "description": "Command Injection",
+      "cwe": "CWE-78",
+      "recommendation": "Avoid system() calls; use safer alternatives like execve()."
+    },
+    {
+      "pattern": "sprintf(",
+      "severity": "MEDIUM",
+      "description": "Potential Buffer Overflow",
+      "cwe": "CWE-120",
+      "recommendation": "Use snprintf() to prevent buffer overflows."
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
