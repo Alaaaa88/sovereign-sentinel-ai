@@ -1,3 +1,11 @@
+# Build Artifacts
+build/
+CMakeFiles/
+CMakeCache.txt
+a.out
+*.o
+*.exe
 __pycache__/
-*.pyc
-venv/
+.venv/
+.DS_Store
+security_report.json
