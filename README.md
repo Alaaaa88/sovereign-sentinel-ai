@@ -1,50 +1,50 @@
 # Sovereign Sentinel AI
 
-![Security Scan](https://github.com/Alaaaa88/sovereign-sentinel-ai/actions/workflows/security.yml/badge.svg)
+**Automated Security Assessment Framework and High-Performance Vulnerability Discovery Engine.**
 
-Sovereign Sentinel is a high-performance security framework designed for automated vulnerability discovery using advanced systems engineering. The project integrates C++ for low-level processing with Python for contextual data analysis.
-
----
-
-### Technical Features
-
-* **High-Performance Engine:** A C++ core engine built for memory analysis and high-speed code scanning.
-* **Orchestration Layer:** A Python-based automation layer that performs data flow analysis across project files.
-* **Contextual Reporting:** Generates intelligent JSON reports detailing vulnerability propagation paths and CWE-mapped findings.
-* **Performance-First:** Architecture optimized for scalability and integration into CI/CD pipelines.
+Developed by **Alaa Aljohani**, Performance Architect and Cryptography Specialist.
 
 ---
 
-### Tech Stack
-
-| Component | Technology |
-| --- | --- |
-| Core Engine | C++ |
-| Automation | Python 3.10+ |
-| Architecture | Orchestrator-Worker Pattern |
-| Data Integrity | Pydantic / JSON Schema |
+## Overview
+Sovereign Sentinel AI is a localized, high-performance security framework engineered for automated vulnerability discovery and localized threat analysis. Built with a strict focus on technical sovereignty and minimal compute latency, the architecture splits heavy mathematical and structural parsing workloads into a dedicated performance tier while maintaining a flexible orchestrator for metadata compilation.
 
 ---
 
-### Usage
+## Technical Features and Architecture
 
-1. **Install dependencies:**
-```bash
-pip install -r requirements.txt
+* **High-Performance C++ Core**: A specialized runtime tier built for cache-efficient memory scanning, static analysis parsing, and lightning-fast signature matching.
+* **Python Orchestration Layer**: Implements the **Orchestrator-Worker Pattern** to manage data flow analysis, rules aggregation, and asynchronous file discovery across target repositories.
+* **Automated Visual Dashboards**: Transforms raw diagnostic data into localized, production-ready HTML reports (`report.html`) complete with dynamic metrics and intuitive severity indexing.
+* **Deterministic Risk Mapping**: Classifies architectural flaws by risk tier (**Critical**, **High**, **Medium**, **Low**) and maps structural code weaknesses directly to standard **CWE** IDs (Common Weakness Enumerations).
+* **Remediation Pathways**: Suggests deterministic code fixes, highlighting architectural performance alignment routes—such as offloading compute-heavy tasks to the SovereignVault Titan-V8 SIMD engine.
 
+---
 
+## Tech Stack
 
+| Component | Technology | Description |
+| --- | --- | --- |
+| **Core Engine** | C++ | Low-level processing, memory optimization, and high-throughput code parsing. |
+| **Automation & Interface** | Python 3.10+ | Asynchronous file mapping, operational orchestration, and JSON transformation. |
+| **Data Integrity** | Pydantic / JSON Schema | Strict schema enforcement and deterministic data pipeline guarantees. |
+| **Reporting Core** | HTML5 / Modular CSS | Automated, human-readable visual dashboard generation. |
 
-g++ core-engine/scanner.cpp -o core-engine/scanner
+---
 
+## Project Structure
 
-
-python3 scanner_engine.py ./target_directory
-
+```text
 sovereign-sentinel-ai/
-├── .github/workflows/  # CI/CD Security Pipeline
-├── core-engine/        # High-performance scanning engine (C++)
-├── scanner_engine.py   # Orchestrator (Python)
-├── rules.json          # Security detection patterns
-├── requirements.txt    # Dependency manifest
-└── security_report.json # Analysis output
+├── .github/workflows/   # Automated CI/CD Security Validation Pipelines
+├── core-engine/         # High-performance scanning implementation (C++)
+│   └── scanner.cpp      # Memory parsing and low-level scanning core
+├── scanner_engine.py    # Main Automation Orchestrator (Python)
+├── sentinel_core.py     # HTML report compiler and CWE metrics analyzer
+├── rules.json           # Security patterns and detection signature schemas
+├── requirements.txt     # Python environment dependency manifest
+├── report.html          # Generated visual dashboard report
+└── security_report.json # Structural JSON analysis output data
+
+
+
